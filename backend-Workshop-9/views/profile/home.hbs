@@ -1,0 +1,33 @@
+<h2>Välkommen {{user.username}}</h2>
+<p>Här är dina startade Lärostigar. Lycka till nu!</p>
+{{#each paths}}
+   <div>
+     <div class="path">
+        <h3>{{learningPath.title}}</h3>
+        <p><b><span class="steps-count"></span> | <span class="progress-percent"></span></b></p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 40%"></div>
+        </div>
+        <p>{{learningPath.description}}</p>
+
+        <ol>
+            {{#each learningPath.steps}}
+            <li>
+                <p>
+                    {{#if done}}
+                    <input type="checkbox" class="complete-step" checked data-step-id="{{_id}}" data-done="true" data-learning-path-id="{{../_id}}">
+                    {{else}}
+                     <input type="checkbox" class="complete-step" data-step-id="{{_id}}" data-done="false" data-learning-path-id="{{../_id}}">
+                     {{/if}}
+                    <b>{{title}}</b>
+                    <i>{{description}}</i>
+                    <p>Link: <a href="{{link}}">link</a></p>
+                </p>
+            </li>
+            {{/each}}
+        </ol>
+        <hr>
+    </div>
+
+   </div>
+{{/each}}
